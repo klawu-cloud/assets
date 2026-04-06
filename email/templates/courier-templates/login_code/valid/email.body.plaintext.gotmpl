@@ -1,0 +1,27 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Gunakan kode ini untuk masuk ke Klawu:
+
+{{ .LoginCode }}
+
+Kode ini kedaluwarsa dalam 5 menit.
+{{- else if eq $lang "zh" -}}
+使用此验证码登录 Klawu：
+
+{{ .LoginCode }}
+
+该验证码将在 5 分钟后失效。
+{{- else -}}
+Use this code to sign in to Klawu:
+
+{{ .LoginCode }}
+
+This code expires in 5 minutes.
+{{- end -}}

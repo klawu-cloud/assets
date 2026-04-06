@@ -1,0 +1,18 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Kode masuk diminta untuk akun Anda.
+Demi keamanan, kami tidak dapat memproses permintaan ini.
+{{- else if eq $lang "zh" -}}
+您的账户请求了登录验证码。
+出于安全原因，我们无法处理此请求。
+{{- else -}}
+A sign-in code was requested for your account.
+For security reasons, we cannot process this request.
+{{- end -}}

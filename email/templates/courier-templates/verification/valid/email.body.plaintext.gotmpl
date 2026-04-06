@@ -1,0 +1,21 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Verifikasi email Anda dengan membuka tautan berikut:
+
+{{ .VerificationURL }}
+{{- else if eq $lang "zh" -}}
+请打开以下链接验证您的邮箱：
+
+{{ .VerificationURL }}
+{{- else -}}
+Verify your email by opening the link below:
+
+{{ .VerificationURL }}
+{{- end -}}

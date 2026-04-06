@@ -1,0 +1,15 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Permintaan pemulihan kata sandi untuk Klawu
+{{- else if eq $lang "zh" -}}
+Klawu 密码找回请求
+{{- else -}}
+Password recovery request for Klawu
+{{- end -}}

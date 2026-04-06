@@ -1,0 +1,15 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Permintaan verifikasi email untuk Klawu
+{{- else if eq $lang "zh" -}}
+Klawu 邮箱验证请求
+{{- else -}}
+Email verification request for Klawu
+{{- end -}}

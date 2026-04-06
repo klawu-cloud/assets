@@ -1,0 +1,27 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Gunakan kode ini untuk mengatur ulang kata sandi Anda:
+
+{{ .RecoveryCode }}
+
+Kode ini kedaluwarsa dalam 1 jam.
+{{- else if eq $lang "zh" -}}
+使用此验证码重置您的密码：
+
+{{ .RecoveryCode }}
+
+该验证码将在 1 小时后失效。
+{{- else -}}
+Use this code to reset your password:
+
+{{ .RecoveryCode }}
+
+This code expires in 1 hour.
+{{- end -}}

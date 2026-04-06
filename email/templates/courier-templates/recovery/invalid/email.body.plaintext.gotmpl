@@ -1,0 +1,18 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Permintaan pemulihan kata sandi dibuat.
+Demi keamanan, kami tidak dapat memproses permintaan ini.
+{{- else if eq $lang "zh" -}}
+已收到密码找回请求。
+出于安全原因，我们无法处理此请求。
+{{- else -}}
+A password recovery request was made.
+For security reasons, we cannot process this request.
+{{- end -}}

@@ -1,0 +1,21 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Atur ulang kata sandi Anda dengan membuka tautan berikut:
+
+{{ .RecoveryURL }}
+{{- else if eq $lang "zh" -}}
+请打开以下链接重置密码：
+
+{{ .RecoveryURL }}
+{{- else -}}
+Reset your password by opening the link below:
+
+{{ .RecoveryURL }}
+{{- end -}}

@@ -1,0 +1,15 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Atur ulang kata sandi Klawu Anda dengan kode {{ .RecoveryCode }}
+{{- else if eq $lang "zh" -}}
+使用验证码 {{ .RecoveryCode }} 重置您的 Klawu 密码
+{{- else -}}
+Reset your Klawu password with code {{ .RecoveryCode }}
+{{- end -}}
