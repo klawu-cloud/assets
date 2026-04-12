@@ -1,0 +1,15 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Gunakan kode {{ .RegistrationCode }} untuk menyelesaikan pendaftaran akun Klawu
+{{- else if eq $lang "zh" -}}
+使用验证码 {{ .RegistrationCode }} 完成 Klawu 账户注册
+{{- else -}}
+Use code {{ .RegistrationCode }} to complete your Klawu account registration
+{{- end -}}

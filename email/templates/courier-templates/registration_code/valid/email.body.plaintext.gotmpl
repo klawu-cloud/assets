@@ -1,0 +1,27 @@
+{{- $lang := "en" -}}
+{{- with .Identity -}}
+  {{- with .traits -}}
+    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $lang "id" -}}
+Gunakan kode berikut untuk menyelesaikan pendaftaran akun Klawu Anda:
+
+{{ .RegistrationCode }}
+
+Kode ini kedaluwarsa dalam {{ .ExpiresInMinutes }} menit.
+{{- else if eq $lang "zh" -}}
+使用以下验证码完成您的 Klawu 账户注册：
+
+{{ .RegistrationCode }}
+
+该验证码将在 {{ .ExpiresInMinutes }} 分钟后失效。
+{{- else -}}
+Use this code to complete your Klawu account registration:
+
+{{ .RegistrationCode }}
+
+This code expires in {{ .ExpiresInMinutes }} minutes.
+{{- end -}}
