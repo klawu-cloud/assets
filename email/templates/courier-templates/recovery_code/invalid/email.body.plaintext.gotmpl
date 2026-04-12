@@ -1,10 +1,8 @@
 {{- $lang := "en" -}}
-{{- with .Identity -}}
-  {{- with .traits -}}
-    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
-    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+{{- with .TransientPayload -}}
+    {{- if eq (printf "%v" (index . "language")) "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (printf "%v" (index . "language")) "zh" -}}{{- $lang = "zh" -}}
     {{- end -}}
-  {{- end -}}
 {{- end -}}
 {{- if eq $lang "id" -}}
 Permintaan pemulihan kata sandi dibuat.

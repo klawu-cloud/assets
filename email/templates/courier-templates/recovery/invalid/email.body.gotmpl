@@ -29,12 +29,10 @@
 {{ end }}
 {{ define "_footer" }}
 {{- $footerLang := "en" -}}
-{{- with .Identity -}}
-  {{- with .traits -}}
-    {{- if eq (index . "language") "id" -}}{{- $footerLang = "id" -}}
-    {{- else if eq (index . "language") "zh" -}}{{- $footerLang = "zh" -}}
+{{- with .TransientPayload -}}
+    {{- if eq (printf "%v" (index . "language")) "id" -}}{{- $footerLang = "id" -}}
+    {{- else if eq (printf "%v" (index . "language")) "zh" -}}{{- $footerLang = "zh" -}}
     {{- end -}}
-  {{- end -}}
 {{- end -}}
         <p class="email-muted" style="margin:24px 0 0 0;color:#6b7280;font-size:12px;">
           {{- if eq $footerLang "id" -}}Jika Anda tidak meminta ini, Anda dapat mengabaikan email ini dengan aman.
@@ -49,12 +47,10 @@
 {{ end }}
 
 {{- $lang := "en" -}}
-{{- with .Identity -}}
-  {{- with .traits -}}
-    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
-    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+{{- with .TransientPayload -}}
+    {{- if eq (printf "%v" (index . "language")) "id" -}}{{- $lang = "id" -}}
+    {{- else if eq (printf "%v" (index . "language")) "zh" -}}{{- $lang = "zh" -}}
     {{- end -}}
-  {{- end -}}
 {{- end -}}
 
 {{ template "_header" . }}

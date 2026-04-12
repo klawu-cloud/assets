@@ -1,8 +1,8 @@
 {{- $lang := "en" -}}
-{{- with .Identity -}}
-  {{- with .traits -}}
-    {{- if eq (index . "language") "id" -}}{{- $lang = "id" -}}
-    {{- else if eq (index . "language") "zh" -}}{{- $lang = "zh" -}}
+{{- with .Traits -}}
+  {{- with index . "language" -}}
+    {{- if eq . "id" -}}{{- $lang = "id" -}}
+    {{- else if eq . "zh" -}}{{- $lang = "zh" -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
